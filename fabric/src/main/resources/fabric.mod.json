@@ -1,0 +1,25 @@
+{
+    "schemaVersion": 1,
+    "id": "${mod_id}",
+    "version": "${version}",
+    "name": "${mod_name}",
+    "description": "${description}",
+    "authors": [
+        "${mod_author}"
+    ],
+    "contact": {
+      "repo": "https://github.com/MrNavaStar/ProtoWeaver"
+    },
+    "license": "${license}",
+    "icon": "${mod_id}.png",
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+            "me.mrnavastar.protoweaver.Fabric"
+        ]
+    },
+    "mixins": [
+        "${mod_id}.mixins.json"
+    ]
+}
+  
