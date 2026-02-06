@@ -31,3 +31,12 @@ tasks {
         minecraftVersion(minecraft_version)
     }
 }
+
+processResources {
+    def props = [mod_name: mod_name, mod_author: mod_author, version: project.version]
+    inputs.properties props
+    filteringCharset 'UTF-8'
+    filesMatching('plugin.yml') {
+        expand props
+    }
+}
