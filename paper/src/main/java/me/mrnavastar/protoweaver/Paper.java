@@ -3,10 +3,11 @@ package me.mrnavastar.protoweaver;
 import io.netty.channel.Channel;
 import io.netty.channel.epoll.EpollSocketChannel;
 import me.mrnavastar.protoweaver.api.ProtoWeaver;
+import me.mrnavastar.protoweaver.api.protocol.protomessage.ProtoMessage;
 import me.mrnavastar.protoweaver.api.protocol.velocity.VelocityAuth;
 import me.mrnavastar.protoweaver.core.util.ProtoLogger;
 import me.mrnavastar.protoweaver.server.netty.ProtoDeterminer;
-import me.mrnavastar.protoweaver.server.netty.SSLContext;
+import me.mrnavastar.protoweaver.server.netty.ProtoInitializer;
 import me.mrnavastar.r.R;
 import net.kyori.adventure.key.Key;
 import org.bukkit.NamespacedKey;
@@ -18,37 +19,33 @@ import java.util.logging.Logger;
 public class Paper extends JavaPlugin implements ProtoLogger.IProtoLogger {
 
     private final Logger logger = getLogger();
-    private boolean setup = false;
 
     @Override
     public void onEnable() {
-        if (!ProtoWeaver.getLoadedProtocols().isEmpty()) setup();
-        else ProtoWeaver.PROTOCOL_LOADED.register(protocol -> setup());
-    }
-
-    private void setup() {
-        if (setup) return;
         ProtoLogger.setLogger(this);
+        ProtoInitializer.initialize(getDataFolder().getAbsolutePath() + "/keys", () -> {
+            try {
+                R.of(Class.forName("io.papermc.paper.network.ChannelInitializeListenerHolder"))
+                        .call("addListener",
+                                R.TypeBinding.of(Key.class, new NamespacedKey("protoweaver", "internal")),
+                                R.of(this).implement("io.papermc.paper.network.ChannelInitializeListener")
+                        );
 
-        try {
-            R.of(Class.forName("io.papermc.paper.network.ChannelInitializeListenerHolder"))
-                .call("addListener",
-                        R.TypeBinding.of(Key.class, new NamespacedKey("protoweaver", "internal")),
-                        R.of(this).implement("io.papermc.paper.network.ChannelInitializeListener")
+                VelocityAuth.setSecret(R.of(R.of(Class.forName("io.papermc.paper.configuration.GlobalConfiguration"))
+                                .call("get", Object.class))
+                        .of("proxies")
+                        .of("velocity")
+                        .get("secret", String.class).getBytes(StandardCharsets.UTF_8)
                 );
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        });
 
-            VelocityAuth.setSecret(R.of(R.of(Class.forName("io.papermc.paper.configuration.GlobalConfiguration"))
-                    .call("get", Object.class))
-                    .of("proxies")
-                    .of("velocity")
-                    .get("secret", String.class).getBytes(StandardCharsets.UTF_8)
-            );
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-
-        SSLContext.init(getDataFolder().getAbsolutePath());
-        setup = true;
+        ProtoWeaver.load(ProtoMessage.getProtocol());
+        ProtoMessage.MESSAGE_RECEIVED.register((h, a, b) -> {
+            System.out.println(a);
+        });
     }
 
     @SuppressWarnings("unused")
