@@ -1,4 +1,4 @@
-package me.mrnavastar.protoweaver;
+package me.mrnavastar.protoweaver.loader;
 
 
 import me.mrnavastar.protoweaver.api.protocol.velocity.VelocityAuth;

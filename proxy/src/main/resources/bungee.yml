@@ -1,0 +1,4 @@
+name: ${mod_name}
+main: me.mrnavastar.protoweaver.proxy.Waterfall
+author: ${mod_author}
+version: '${version}'

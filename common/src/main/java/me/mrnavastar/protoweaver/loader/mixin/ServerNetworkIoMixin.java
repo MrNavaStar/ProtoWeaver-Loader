@@ -1,4 +1,4 @@
-package me.mrnavastar.protoweaver.mixin;
+package me.mrnavastar.protoweaver.loader.mixin;
 
 import io.netty.channel.Channel;
 import me.mrnavastar.protoweaver.server.netty.ProtoDeterminer;

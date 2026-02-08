@@ -1,6 +1,6 @@
 name: ${mod_name}
 author: ${mod_author}
 version: '${version}'
-main: me.mrnavastar.protoweaver.Paper
+main: me.mrnavastar.protoweaver.loader.Paper
 api-version: '1.13'
 load: STARTUP

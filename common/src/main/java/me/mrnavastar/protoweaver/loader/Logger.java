@@ -1,4 +1,4 @@
-package me.mrnavastar.protoweaver;
+package me.mrnavastar.protoweaver.loader;
 
 import me.mrnavastar.protoweaver.core.util.ProtoConstants;
 import me.mrnavastar.protoweaver.core.util.ProtoLogger;
