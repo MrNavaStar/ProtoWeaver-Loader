@@ -41,11 +41,6 @@ public class Paper extends JavaPlugin implements ProtoLogger.IProtoLogger {
                 throw new RuntimeException(e);
             }
         });
-
-        ProtoWeaver.load(ProtoMessage.getProtocol());
-        ProtoMessage.MESSAGE_RECEIVED.register((h, a, b) -> {
-            System.out.println(a);
-        });
     }
 
     @SuppressWarnings("unused")
