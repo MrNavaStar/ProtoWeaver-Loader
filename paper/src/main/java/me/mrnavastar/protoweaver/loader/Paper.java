@@ -2,6 +2,7 @@ package me.mrnavastar.protoweaver.loader;
 
 import io.netty.channel.Channel;
 import io.netty.channel.epoll.EpollSocketChannel;
+import io.netty.channel.socket.nio.NioSocketChannel;
 import me.mrnavastar.protoweaver.api.protocol.velocity.VelocityAuth;
 import me.mrnavastar.protoweaver.core.util.ProtoLogger;
 import me.mrnavastar.protoweaver.server.netty.ProtoDeterminer;
@@ -48,6 +49,11 @@ public class Paper extends JavaPlugin implements ProtoLogger.IProtoLogger {
 
     @SuppressWarnings("unused")
     public void afterInitChannel(EpollSocketChannel channel) {
+        ProtoDeterminer.registerToPipeline(channel);
+    }
+
+    @SuppressWarnings("unused")
+    public void afterInitChannel(NioSocketChannel channel) {
         ProtoDeterminer.registerToPipeline(channel);
     }
 
