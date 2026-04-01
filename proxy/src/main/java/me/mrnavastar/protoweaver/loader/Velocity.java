@@ -9,7 +9,6 @@ import com.velocitypowered.api.plugin.Plugin;
 import com.velocitypowered.api.plugin.annotation.DataDirectory;
 import com.velocitypowered.api.proxy.ProxyServer;
 import com.velocitypowered.api.proxy.server.ServerInfo;
-import me.mrnavastar.protoweaver.core.util.ProtoConstants;
 import me.mrnavastar.protoweaver.core.util.ProtoLogger;
 import me.mrnavastar.protoweaver.proxy.ServerSupplier;
 import me.mrnavastar.protoweaver.proxy.api.ProtoProxy;
@@ -20,9 +19,9 @@ import java.nio.file.Path;
 import java.util.List;
 
 @Plugin(
-        id = ProtoConstants.PROTOWEAVER_ID,
-        name = ProtoConstants.PROTOWEAVER_NAME,
-        version = ProtoConstants.PROTOWEAVER_VERSION,
+        id = "protoweaver",
+        name = "ProtoWeaver",
+        version = "1.5.1",
         authors = "MrNavaStar"
 )
 public class Velocity implements ServerSupplier, ProtoLogger.IProtoLogger {
