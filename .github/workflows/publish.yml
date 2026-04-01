@@ -25,7 +25,7 @@ jobs:
           modrinth-id: 6nKmUVc7
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
           modrinth-featured: true
-          files: ${{ github.workspace }}/fabric/build/libs/protoweaver-${{ github.event.release.tag_name }}-fabric.jar
+          files: ${{ github.workspace }}/fabric/build/libs/protoweaver-fabric-${{ github.event.release.tag_name }}.jar
           java: 21
           loaders: |
             fabric
@@ -39,7 +39,7 @@ jobs:
           modrinth-id: 6nKmUVc7
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
           modrinth-featured: true
-          files: ${{ github.workspace }}/forge/build/libs/protoweaver-${{ github.event.release.tag_name }}-forge.jar
+          files: ${{ github.workspace }}/forge/build/libs/protoweaver-forge-${{ github.event.release.tag_name }}.jar
           java: 21
           loaders: forge
           game-versions: |
@@ -63,7 +63,7 @@ jobs:
           modrinth-id: 6nKmUVc7
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
           modrinth-featured: true
-          files: ${{ github.workspace }}/paper/build/libs/protoweaver-${{ github.event.release.tag_name }}-paper.jar
+          files: ${{ github.workspace }}/paper/build/libs/protoweaver-paper-${{ github.event.release.tag_name }}.jar
           java: 21
           loaders: |
             paper
@@ -78,7 +78,7 @@ jobs:
           modrinth-id: 6nKmUVc7
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
           modrinth-featured: true
-          files: ${{ github.workspace }}/proxy/build/libs/protoweaver-${{ github.event.release.tag_name }}-proxy.jar
+          files: ${{ github.workspace }}/proxy/build/libs/protoweaver-proxy-${{ github.event.release.tag_name }}.jar
           java: 21
           loaders: |
             velocity

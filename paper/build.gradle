@@ -16,7 +16,7 @@ dependencies {
 }
 
 shadowJar {
-    archiveFileName = "protoweaver-${version}-paper.jar"
+    archiveFileName = "protoweaver-paper-${version}.jar"
     configurations = [project.configurations.shadow]
 
     dependencies {

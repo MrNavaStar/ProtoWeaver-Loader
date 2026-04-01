@@ -17,7 +17,7 @@ dependencies {
 }
 
 shadowJar {
-    archiveFileName = "protoweaver-${version}-proxy.jar"
+    archiveFileName = "protoweaver-proxy-${version}.jar"
     configurations = [project.configurations.shadow]
 
     dependencies {
