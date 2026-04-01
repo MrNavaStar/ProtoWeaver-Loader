@@ -13,10 +13,6 @@ jobs:
           distribution: temurin
           java-version: 21
 
-      - name: Set Version
-        run: |
-          sed -i 's/debug-build/${{ github.event.release.tag_name }}/g' gradle.properties
-
       - name: Build
         run: ./gradlew build publish
         env:
