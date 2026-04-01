@@ -51,7 +51,7 @@ jobs:
           modrinth-id: 6nKmUVc7
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
           modrinth-featured: true
-          files: ${{ github.workspace }}/neoforge/build/libs/protoweaver-${{ github.event.release.tag_name }}-neoforge.jar
+          files: ${{ github.workspace }}/neoforge/build/libs/protoweaver-neoforge-${{ github.event.release.tag_name }}.jar
           java: 21
           loaders: neoforge
           game-versions: |
